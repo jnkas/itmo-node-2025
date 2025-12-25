@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link href="style.css"> -->
+    <script async src="script1.js"></script>
+</head><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .product-card {
+            transition: transform 0.2s;
+            height: 100%;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .rating {
+            color: #ffc107;
+        }
+        .header-bg {
+            background-color: #f8f9fa;
+        }
+        .col-5-cards {
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
+        @media (max-width: 1200px) {
+            .col-5-cards {
+                flex: 0 0 25%;
+                max-width: 25%;
+            }
+        }
+        @media (max-width: 992px) {
+            .col-5-cards {
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%;
+            }
+        }
+        @media (max-width: 768px) {
+            .col-5-cards {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+        @media (max-width: 576px) {
+            .col-5-cards {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-bg border-bottom mb-4">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light py-3">
+                <!-- Логотип -->
+                <a class="navbar-brand fw-bold" href="#">
+                    <i class="bi bi-shop"></i> Магазин
+                </a>
+                
+                <!-- Кнопка для мобильного меню -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Поиск -->
+                <div class="flex-grow-1 mx-3">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Поиск товаров..." aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Меню -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Каталог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Контакты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-cart"></i> Корзина
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <h2 class="mb-4">Каталог товаров</h2>
+        
+        <!-- Блок с карточками товаров -->
+        <!-- Первый ряд (5 товаров) -->
+        <div class="row g-4 mb-4">
+            <!-- Товар 1 -->
+            <div class="col-5-cards">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Товар+1" class="card-img-top product-image" alt="Товар 1">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Смартфон Premium</h5>
+                        <div class="rating mb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <span class="text-muted ms-1">(4.5)</span>
+                        </div>
+                        <p class="card-text text-primary fw-bold fs-4 mt-auto">25 990 ₽</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товар 2 -->
+            <div class="col-5-cards">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Товар+2" class="card-img-top product-image" alt="Товар 2">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Ноутбук Pro</h5>
+                        <div class="rating mb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <span class="text-muted ms-1">(5.0)</span>
+                        </div>
+                        <p class="card-text text-primary fw-bold fs-4 mt-auto">89 990 ₽</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товар 3 -->
+            <div class="col-5-cards">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Товар+3" class="card-img-top product-image" alt="Товар 3">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Наушники Wireless</h5>
+                        <div class="rating mb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            <span class="text-muted ms-1">(4.0)</span>
+                        </div>
+                        <p class="card-text text-primary fw-bold fs-4 mt-auto">4 990 ₽</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товар 4 -->
+            <div class="col-5-cards">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Товар+4" class="card-img-top product-image" alt="Товар 4">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Планшет Ultra</h5>
+                        <div class="rating mb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <span class="text-muted ms-1">(4.5)</span>
+                        </div>
+                        <p class="card-text text-primary fw-bold fs-4 mt-auto">32 990 ₽</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товар 5 -->
+            <div class="col-5-cards">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Товар+5" class="card-img-top product-image" alt="Товар 5">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Умные часы</h5>
+                        <div class="rating mb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            <span class="text-muted ms-1">(4.0)</span>
+                        </div>
+                        <p class="card-text text-primary fw-bold fs-4 mt-auto">12 990 ₽</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Второй ряд (5 товаров) -->
+        <div class="row g-4">
+            <!-- Товар 6 -->
+            <div class="col-5-cards">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Товар+6" class="card-img-top product-image" alt="Товар 6">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Клавиатура Gaming</h5>
+                        <div class="rating mb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <span class="text-muted ms-1">(5.0)</span>
+                        </div>
+                        <p class="card-text text-primary fw-bold fs-4 mt-auto">6 990 ₽</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товар 7 -->
+            <div class="col-5-cards">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Товар+7" class="card-img-top product-image" alt="Товар 7">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Мышь Wireless</h5>
+                        <div class="rating mb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <i class="bi bi-star"></i>
+                            <span class="text-muted ms-1">(3.5)</span>
+                        </div>
+                        <p class="card-text text-primary fw-bold fs-4 mt-auto">2 490 ₽</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товар 8 -->
+            <div class="col-5-cards">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Товар+8" class="card-img-top product-image" alt="Товар 8">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Монитор 4K</h5>
+                        <div class="rating mb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <span class="text-muted ms-1">(4.5)</span>
+                        </div>
+                        <p class="card-text text-primary fw-bold fs-4 mt-auto">45 990 ₽</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товар 9 -->
+            <div class="col-5-cards">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Товар+9" class="card-img-top product-image" alt="Товар 8">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Монитор 2K</h5>
+                        <div class="rating mb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <span class="text-muted ms-1">(4.5)</span>
+                        </div>
+                        <p class="card-text text-primary fw-bold fs-4 mt-auto">45 990 ₽</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Товар 10 -->
+            <div class="col-5-cards">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Товар+10" class="card-img-top product-image" alt="Товар 8">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Монитор РРР</h5>
+                        <div class="rating mb-2">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                            <span class="text-muted ms-1">(4.5)</span>
+                        </div>
+                        <p class="card-text text-primary fw-bold fs-4 mt-auto">45 990 ₽</p>
+                        <button class="btn btn-primary">В корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light border-top mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Колонка 1 -->
+                <div class="col-md-4">
+                    <h5 class="mb-3">Категории</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-muted">Электроника</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Компьютеры</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Смартфоны</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Аксессуары</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Гаджеты</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Колонка 2 -->
+                <div class="col-md-4">
+                    <h5 class="mb-3">Информация</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-muted">О компании</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Доставка</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Оплата</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Гарантия</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Колонка 3 -->
+                <div class="col-md-4">
+                    <h5 class="mb-3">Помощь</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-muted">Вопросы и ответы</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Возврат товара</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Политика конфиденциальности</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Условия использования</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted">Поддержка</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

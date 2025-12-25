@@ -2,8 +2,11 @@ const http = require('http'); // подключение модуля
 const fs = require('fs'); // подключение модуля для работы с файлом
 // const filename = "index.html";
 
-const server = http.createServer((request, response) => {// вызов метода создания http сервера
+const tplHome = new TemplateManager() 
 
+tplHome.header().body(data).footer()
+
+const server = http.createServer((request, response) => {// вызов метода создания http сервера
 
     if (request.url === '/') {
         let html = ''
@@ -14,7 +17,7 @@ const server = http.createServer((request, response) => {// вызов мето�
                 response.end();
             } else {
 
-                html.concat(data) 
+                html += data 
 
                 fs.readFile("body.html", 'utf8', (err, data) => {
                     if (err) {
@@ -22,7 +25,7 @@ const server = http.createServer((request, response) => {// вызов мето�
                         response.statusCode = 404;
                         response.end();
                     } else {
-                        html.concat(data) 
+                        html += data 
                         
                         fs.readFile("footer.html", 'utf8', (err, data) => {
                             if (err) {
@@ -31,14 +34,14 @@ const server = http.createServer((request, response) => {// вызов мето�
                                 response.end();
                             } else {
                                 html += data
-                                html.replace(/(\r\n|\n|\r)/g, '')
+                                // html.replace(/(\r\n|\n|\r)/g, '')
                                 console.log(html);
                             
                             
                                 // console.log(data);
                                 // console.log(`The file ${filename} is read and sent to the client\n`);
                                 response.writeHead(200, { 'Content-Type': 'text/html' });
-                                response.end(data);
+                                response.end(html);
                             }
                         });
                     }
@@ -57,5 +60,5 @@ const server = http.createServer((request, response) => {// вызов мето�
            
     console.log("Request accepted!");
 }).listen(3004, () => {
-    console.log("HTTP server works in 3003 port!\n");
+    console.log("HTTP server works in 3004 port!\n");
 });
