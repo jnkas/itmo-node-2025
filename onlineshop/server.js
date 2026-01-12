@@ -6,27 +6,49 @@ const path = require('path')
 const { dirname } = require('path');
 const PATH = dirname(require.main.filename);
 
-console.log(require)
+// console.log(require)
 
 const server = http.createServer((request, response) => {// вызов метода создания http сервера
 
-    if (request.url === '/') {
+    if (request.url.startsWith('/')) {
+
+        console.log(request.url)
+        let decodedURL = decodeURI(request.url).replaceAll('+', ' ')
+        console.log(decodedURL)
+
+        if (false) {
+            fs.readFile("index.html", 'utf8', (err, data) => {
+                if (err) {
+                    console.log('Could not find or open file for reading\n');
+                    response.statusCode = 404;
+                    response.end();
+                } else {
+
+                    // console.log(data);
+                    // console.log(`The file ${filename} is read and sent to the client\n`);
+                    response.writeHead(200, { 'Content-Type': 'text/html' });
+                    response.end(data);
+                }
+            });
+        } else {
+            fs.readFile("src/auth.html", 'utf8', (err, data) => {
+                if (err) {
+                    console.log('Could not find or open file for reading\n');
+                    response.statusCode = 404;
+                    response.end();
+                } else {
+                    response.writeHead(200, { 'Content-Type': 'text/html' });
+                    response.end(data);
+                }
+            })
+        }
+
+
+
         
         console.log("Точка входа " + PATH )
         let html = ''
-        fs.readFile("index.html", 'utf8', (err, data) => {
-            if (err) {
-                console.log('Could not find or open file for reading\n');
-                response.statusCode = 404;
-                response.end();
-            } else {
-
-                // console.log(data);
-                // console.log(`The file ${filename} is read and sent to the client\n`);
-                response.writeHead(200, { 'Content-Type': 'text/html' });
-                response.end(data);
-            }
-        });
+        
     } else if (request.url === '/script1.js') {
         let html = ''
         fs.readFile("script1.js", 'utf8', (err, data) => {
@@ -102,6 +124,37 @@ const server = http.createServer((request, response) => {// вызов мето�
 
 
 
+    } else if (request.url === '/api/validateUserData') {
+        // console.log(request)
+        let strData = '';
+		
+		request.on('data', (chunk)=>{
+			strData += chunk;
+		});
+		
+		request.on('end', (res)=>{
+			console.log(strData);
+
+            let userAuthData = JSON.parse(strData)
+
+            let objRes = {
+                message: '',
+                auth: 0
+            }
+
+            if (userAuthData.email === 'admin@gmail.com' && userAuthData.password === '123') {
+                console.log('Авторизация успешна');
+                objRes.auth = 1
+                objRes.message = 'Авторизация успешна'
+            } else {
+                objRes.message = 'Авторизация не успешна'
+            }
+            response.statusCode = 200;
+            response.end(JSON.stringify(objRes));
+
+			
+			
+		});	
     }
 
 
