@@ -35,7 +35,7 @@
         </form>
         <script>
 
-            if (!window.User) window.User = {}
+            // if (!window.User) window.User = {}
 
             const $form = document.querySelector('#auth')
             $form.addEventListener('submit', (e)=> {
@@ -46,50 +46,42 @@
                     password: $form.querySelector('[name="authPassword"]').value
                 }
 
-                fetch('/api/validateUserData', {
+                fetch('/api/registrationUser', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(objData)
                 })
-                // .then((res)=> {
-                //     if(res.ok) {
-                //         console.log(res)
-                //         console.log('Пользователь найден')
-                //     } else {
-                //         console.log('ошибка авторизации')
-                //     }
-                // })
                 .then(res => res.json())
                 .then((data)=> {
-                    console.log(data.auth)
-                    //Сохраним глобально 
-                    User.auth_token = data.auth
+                    // console.log(data.auth)
+                    // //Сохраним глобально 
+                    // User.auth_token = data.auth
 
-                    if (data.auth !== 0) {
-                        //покажем витрину
-                        fetch('/', {
-                            method: 'GET',
-                            headers: {
-                                'Authorization': `${data.auth}` 
-                            }, 
-                        }).then(res => res.text())
-                        .then((data) => {
-                            //рендерим HTML
-                            document.write(data)
-                        })
-                    }
-                    else {
-                        let htmlNode = document.createElement('div')
-                        htmlNode.innerHTML = `
-                            <div class="alert alert-danger" role="alert">
-                            ${data.message}
-                            </div>
-                        `
+                    // if (data.auth !== 0) {
+                    //     //покажем витрину
+                    //     fetch('/', {
+                    //         method: 'GET',
+                    //         headers: {
+                    //             'Authorization': `${data.auth}` 
+                    //         }, 
+                    //     }).then(res => res.text())
+                    //     .then((data) => {
+                    //         //рендерим HTML
+                    //         document.write(data)
+                    //     })
+                    // }
+                    // else {
+                    //     let htmlNode = document.createElement('div')
+                    //     htmlNode.innerHTML = `
+                    //         <div class="alert alert-danger" role="alert">
+                    //         ${data.message}
+                    //         </div>
+                    //     `
 
-                        $form.appendChild(htmlNode)
-                    }
+                    //     $form.appendChild(htmlNode)
+                    // }
 
                 })
             })
