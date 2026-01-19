@@ -1,0 +1,23 @@
+h1 {
+    color: black;
+}
+
+body {
+    background-image: url('/images/bg.avif');
+}
+
+.container {
+    background: white;
+}
+
+.comment {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+
+form.send-comments {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}

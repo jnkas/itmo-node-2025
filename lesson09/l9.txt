@@ -1,0 +1,12 @@
+Объект req
+req.params
+req.query
+req.body
+req.headers
+req.method
+req.url
+
+Объект res
+res.send()
+res.json()
+res.status(201).send()

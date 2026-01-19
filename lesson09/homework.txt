@@ -1,0 +1,5 @@
+Задание 
+Сделать API:
+
+GET /ping → { "message": "pong" }
+POST /echo → возвращает то, что пришло в body
