@@ -23,8 +23,29 @@ router.get('/allcomments', (req, res)=> {
 router.post('/comment', express.json(), (req, res)=> {
     let data = req.body
 
+    sendMailToAdmin(data)
+
     comments.push(data)
     res.status(200).end()
+})
+
+router.get('/comment/:index', (req, res)=>{
+    let index = req.params.index
+    let comment = comments[index]
+
+    if(comment) {
+        res.status(200)
+        res.set('Content-Type', 'text/html')
+        res.send(`
+            <h1>Детали о комментарии №${index}</h1>
+            <p>Автор: ${comment.name}</p>
+            <p>Автор: ${comment.message}</p>
+            <p>Автор: ${comment.date}</p>
+            <a href="/">На главную</a>
+        `)
+
+    }
+
 })
 
 module.exports = router

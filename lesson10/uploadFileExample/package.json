@@ -1,19 +1,18 @@
 {
-  "name": "lesson09",
+  "name": "uploadfileexample",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "main": "express-example.js",
+  "main": "index.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "bootstrap": "^5.3.8",
-    "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "morgan": "^1.10.1",
-    "nodemailer": "^7.0.12"
+    "multer": "^2.0.2",
+    "nodemon": "^3.1.11"
   }
 }

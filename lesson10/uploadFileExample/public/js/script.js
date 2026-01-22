@@ -43,14 +43,37 @@ function sendComment() {
     })
 } 
 
+function sendFile() {
+
+    const $fileUploader = document.querySelector('#fileUploader')
+    const file = $fileUploader.files[0]
+
+    const formData = new FormData()
+
+    formData.append('file', file)
+    
+
+    fetch('/upload', {
+        method: 'POST',
+        // headers: {
+        //     'Content-Type': 'multipart/form-data'
+        // },
+        body: formData
+    }).then(()=> {
+        // document.querySelector('.comments').innerHTML = ''
+        // getAllComments()
+    })
+} 
+
 document.addEventListener('DOMContentLoaded', ()=> {
-    getAllComments () //запросили комменты
+    // getAllComments () //запросили комменты
 
     //отправляем комменты
     let $btn = document.querySelector('.btn')
     $btn.addEventListener('click', ()=> {
         //сбор и отправка данных формы
-        sendComment()
+        // sendComment()
+        sendFile()
     })
 
 
