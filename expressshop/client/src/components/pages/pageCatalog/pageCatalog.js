@@ -1,7 +1,13 @@
 import { header } from "./../../header/header.js"
+import { getAllProducts } from "../../../api/products.js"
+import { productCard } from "../../productCard/productCard.js"
 
-export function pageCatalog(params) {
+export async function pageCatalog(params) {
 
+    const data = await getAllProducts()
+
+    console.log(data)
+    const arr = ''
     const headerComponent = header()
 
     const tpl = `
@@ -13,7 +19,7 @@ export function pageCatalog(params) {
             
             <!-- Блок с карточками товаров -->
             <div id="catalog">
-                
+                ${(data.map((item)=> productCard(item)).join(''))}
             </div>
             
         </main>

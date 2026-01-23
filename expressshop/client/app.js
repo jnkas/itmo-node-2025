@@ -7,13 +7,13 @@ appContainer.innerHTML = pageHome()
 
 document.addEventListener('DOMContentLoaded', (e)=> {
 
-    document.addEventListener('click', (e)=> {
+    document.addEventListener('click', async (e)=> {
         if (e.target.closest('a')) {
             e.preventDefault();
             console.log(e.target.href)
             let route = new URL(e.target.href).pathname
             let pageComponent = router(route)
-            appContainer.innerHTML = pageComponent()
+            appContainer.innerHTML = await pageComponent()
 
         }
     })

@@ -8,6 +8,9 @@ export function router (url) {
 
     if(url === '/') pageComponent = pageHome
     if(url === '/catalog') pageComponent = pageCatalog
+    // if(url === '/product/:id') pageComponent = pageCatalog
+
+    // if(url === '/info') pageComponent = ..
 
     // if(!pageComponent) pageComponent = page404
 
