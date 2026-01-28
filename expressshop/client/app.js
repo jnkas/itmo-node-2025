@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', (e)=> {
         if (e.target.closest('a')) {
             e.preventDefault();
             console.log(e.target.href)
+            if (typeof User === "undefined" || User.role !== 'admin'){
+                if(new URL(e.target.href).pathname === '/admin') return
+            }
             let route = new URL(e.target.href).pathname
             let pageComponent = router(route)
             appContainer.innerHTML = await pageComponent()

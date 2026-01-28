@@ -19,7 +19,7 @@ async function login(req, res, next) {
         //получили данные
         console.log(userObj)
         if (req.body.password === userObj.docs[0].password) {
-            res.json({
+            res.send({
                 message: "Успешно авторизован",
                 token: userObj.docs[0].token,
                 role: userObj.docs[0].role

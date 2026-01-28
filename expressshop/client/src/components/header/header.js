@@ -43,9 +43,11 @@ export function header() {
                             <li class="nav-item">
                                 <a class="nav-link" href="/registration">Регистрация</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin">Админка</a>
-                            </li>
+                            ${typeof User !== 'undefined' && User.role === 'admin' ? 
+                                '<li class="nav-item"><a class="nav-link" href="/admin">Админка</a></li>'
+                                : ''
+                            }
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="bi bi-cart"></i> Корзина
