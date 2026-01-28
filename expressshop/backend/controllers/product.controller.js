@@ -11,20 +11,20 @@ async function getProducts (req, res, next) {
         console.log(docs)
 
         //преобразовали
-        let catData = await dbConnect('db-category')
+        // let catData = await dbConnect('db-category')
 
-            // console.log(req.params.id)
-            // const productId = 'ac743ba0fdb68fc8a1aa8783510048bc'
+        //     // console.log(req.params.id)
+        //     // const productId = 'ac743ba0fdb68fc8a1aa8783510048bc'
 
-            catData.list({include_docs: true})
-            .then(doc => {
-                // console.log(doc)
-                res.json(doc)
+        //     catData.list({include_docs: true})
+        //     .then(doc => {
+        //         // console.log(doc)
+        //         res.json(doc)
 
-                // for который перебирает все категории и по нужному id получает название
-                console.log(docs.rows[0].doc)
-                // docs.rows[0].doc.categoryName = 
-            })
+        //         // for который перебирает все категории и по нужному id получает название
+        //         console.log(docs.rows[0].doc)
+        //         // docs.rows[0].doc.categoryName = 
+        //     })
 
         
 
