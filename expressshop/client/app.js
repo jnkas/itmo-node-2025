@@ -1,5 +1,7 @@
 import {pageHome} from './src/components/pages/pageHome/pageHome.js'
 import {router} from './router/router'
+import { formController } from './src/js/formAuth.controller.js'
+
 
 const appContainer = document.getElementById('app')
 
@@ -14,8 +16,10 @@ document.addEventListener('DOMContentLoaded', (e)=> {
             let route = new URL(e.target.href).pathname
             let pageComponent = router(route)
             appContainer.innerHTML = await pageComponent()
-
+            formController()
         }
     })
+
+    // formController()
 
 })

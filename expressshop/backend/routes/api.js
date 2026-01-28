@@ -1,6 +1,9 @@
 const express = require('express')
 const productController = require('./../controllers/product.controller.js')
+const userController = require('./../controllers/user.controller.js')
 const router = express.Router()
+
+router.post('/login', userController.login)
 
 router.get('/categires', productController.getCategiries)
 

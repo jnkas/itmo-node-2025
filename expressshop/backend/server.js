@@ -13,6 +13,8 @@ const app = express()
 
 // app.use(cors())  на все запросы
 
+app.use(express.json())
+
 app.use('/api', cors(), apiRouter)
 
 
