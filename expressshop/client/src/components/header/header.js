@@ -38,7 +38,10 @@ export function header() {
                                 <a class="nav-link" href="#">О нас</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Контакты</a>
+                                <a class="nav-link" href="/login">Вход</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/registration">Регистрация</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
