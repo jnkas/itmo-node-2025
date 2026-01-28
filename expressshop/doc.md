@@ -26,6 +26,11 @@
         /routes - Обработка маршрутов API
         server.js
 
+Как обрабатывается на бэке запрос 
+get /api/product/123
+
+server -> route -> controller -> service
+
 
 
 

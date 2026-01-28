@@ -19,7 +19,7 @@ export async function pageCatalog(params) {
             
             <!-- Блок с карточками товаров -->
             <div id="catalog">
-                ${(data.map((item)=> productCard(item)).join(''))}
+                ${(data.rows.map((item)=> productCard(item)).join(''))}
             </div>
             
         </main>
