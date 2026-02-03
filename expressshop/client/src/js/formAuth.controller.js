@@ -3,6 +3,9 @@ export function formController () {
     if (!window.User) window.User = {}
 
     const $form = document.querySelector('#auth')
+
+    if($form === null) return
+
     $form.addEventListener('submit', (e)=> {
         e.preventDefault()
 
