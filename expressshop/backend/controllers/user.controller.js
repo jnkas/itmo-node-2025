@@ -1,6 +1,6 @@
-const jwt  = require('jsonwebtoken')
-const { User } = require('./../models/User')
-const { JWT_SECRET } = require('./../middleware/auth') 
+const jwt = require('jsonwebtoken')
+const { User } = require('../models')
+const { JWT_SECRET } = require('../middleware/auth')
 
 //методы для того чтобы 
 // залогинить
