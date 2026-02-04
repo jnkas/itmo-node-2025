@@ -1,5 +1,5 @@
 const jwt  = require('jsonwebtoken')
-const { User } = require('./../models')
+const { User } = require('../models')
 
 const JWT_SECRET = 'secret-key-123'
 
@@ -17,9 +17,24 @@ function userIdentify (req, res, next) {
     try {
         const decoded = jwt.verify(token, JWT_SECRET)
         //Выполнить запрос в БД излечь юзера
+        User.findByPk(decoded.userId)
+            .then((user)=> {
+                if (user) {
+                    req.user = user
+                    req.userId = user.id
+                } else {
+                    req.user = null
+                }
+                next()
+            })
+            .catch(() => {
+                req.user = null
+                next()
+            })
 
     } catch {
-
+        req.user = null
+        return next()
     }
 
     next()

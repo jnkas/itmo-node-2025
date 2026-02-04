@@ -1,17 +1,5 @@
 const { DataTypes } = require('sequelize')
-// const sequelize = require('')
-
-const { Sequelize } = require('sequelize')
-const sequelize = new Sequelize(
-    'db-express',
-    'postgres',
-    '1234',
-    {
-        host: 'localhost',
-        port: 5432,
-        dialect: 'postgres'
-    }
-)
+const sequelize = require('./..config/db')
 
 const User = sequelize.define(
     'User',
@@ -48,3 +36,5 @@ const User = sequelize.define(
         timestamps: false
     }
 )
+
+module.exports = User

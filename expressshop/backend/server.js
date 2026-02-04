@@ -7,7 +7,7 @@ var cors = require('cors')
 const { userIdentify } = require('./middleware/auth') 
 
 const apiRouter = require('./routes/api.js')
-const sequelize = require('./models')
+const { sequelize } = require('./models')
 
 const PORT = 3009
 const app = express()
