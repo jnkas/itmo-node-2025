@@ -1,40 +1,48 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../config/db')
 
-const User = sequelize.define(
-    'User',
+const Product = sequelize.define(
+    'Product',
     {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
+        category_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        role: {
-            type: DataTypes.ENUM('user', 'admin'),
+        price: {
+            type: DataTypes.DECIMAL(10, 2),
             allowNull: false,
-            defaultValue: 'user'
         },
-        email: {
-            type: DataTypes.STRING,
+        price_opt: {
+            type: DataTypes.DECIMAL(10, 2),
             allowNull: false,
-            unique: true 
         },
-        password: {
+        img_url: {
             type: DataTypes.STRING,
+            allowNull: true,
         },
-        jwt_token: {
+        description: {
             type: DataTypes.TEXT,
             allowNull: true,
+        },
+        stock_quantity: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0
         }, 
     },
     {
-        tableName: 'users',
+        tableName: 'products',
         timestamps: false
     }
 )
 
-module.exports = User
+module.exports = Product

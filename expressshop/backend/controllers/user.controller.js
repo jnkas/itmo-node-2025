@@ -40,36 +40,100 @@ async function register(req, res, next) {
     }
 }
 
-async function login(req, res, next) {
-    console.log(req.body)
-    //постучаться в БД и вытащить пользователя по этому логину и проверить пароль
-    let data = await dbConnect('db-users')
-
-    data.find({
-        selector: {
-            username: { "$eq": req.body.email},
-        },
-        limit:1
-    })
-    .then(async (userObj) => {
-        //получили данные
-        console.log(userObj)
-        if (req.body.password === userObj.docs[0].password) {
-            res.send({
-                message: "Успешно авторизован",
-                token: userObj.docs[0].token,
-                role: userObj.docs[0].role
-            })
+async function patchUser(req, res, next) {
+    try {
+        const userId = req.params.id
+        console.log(req.user)
+        if(!req.user) {
+            return res.status(400).json({ message: 'Требуется автрризация'})
         }
-    })
+        
+        if(req.user.id !== userId && req.role !== 'admin' ) {
+            return res.status(403).json({ message: 'Доступ запрещен'})
+        }
+
+        const user = await User.findByPk(userId)
+        if (!user) {
+            return res.status(404).json({ message: 'Пользователь не найден'})
+        }
+
+        const { email, password, name } = req.body
+        const updates = {}
+
+        if (email !== undefined) updates.email = email
+        if (password !== undefined) updates.password = password
+        if (name !== undefined) updates.name = name
+
+        await user.update(updates)
+
+        res.json({
+            message: "Данные обновлены",
+            user: {
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                role: user.role
+            }
+        })
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+async function login(req, res, next) {
+    try {
+        const { email, password } = req.body
+
+        if(!email || !password) {
+            return res.status(400).json({ message: 'нехватает данных - email и пароль - обязательны'})
+        }
+
+        const user = await User.findOne({ where: { email }})
+        
+        if (!user) {
+            return res.status(400).json({ message: 'Пользователь не валиден'})
+        }
+
+        // все проверки пройдены
+
+        const isPasswordValid = user.password == password
+        if (!isPasswordValid) {
+            return res.status(400).json({ message: 'Пароль неверный'})
+        }
+
+        const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' }) 
+
+        res.status(200).json({
+            message: 'Авторизация успешна',
+            token,
+            user: {
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                role: user.role,
+            }
+        })
+    } catch (error) {
+        next(error)
+    }
 
 
-    // пользователь не найден или пароль неверен - отказ
-    // res.status(404).send({})
+}
 
-    // все ОК - даем ключик (полный доступ ко всему || проверить роль)
+async function getUser (req, res, next) {
+    try {
+        const userId = req.params.id
 
+        const user = await User.findByPk((userId), {
+            attributes: ['id', 'email', 'name', 'role']
+        })
 
+        return res.json(user)
+
+    } catch (error) {
+        next(error)
+    }
 }
 
 
@@ -81,6 +145,7 @@ async function logout(req, res, next) {
 module.exports = {
     login,
     register,
+    patchUser,
     logout
 }
 
