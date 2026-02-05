@@ -19,30 +19,31 @@ const Product = sequelize.define(
         },
         price: {
             type: DataTypes.DECIMAL(10, 2),
-            allowNull: false,
+            allowNull: false
         },
         price_opt: {
             type: DataTypes.DECIMAL(10, 2),
-            allowNull: false,
+            allowNull: true
         },
         img_url: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: true
         },
         description: {
             type: DataTypes.TEXT,
-            allowNull: true,
+            allowNull: true
         },
         stock_quantity: {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0
-        }, 
+        },
     },
     {
         tableName: 'products',
         timestamps: false
     }
-)
+);
+
 
 module.exports = Product

@@ -21,15 +21,16 @@ const User = sequelize.define(
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true 
+            unique: true
         },
         password: {
             type: DataTypes.STRING,
+            allowNull: false
         },
         jwt_token: {
             type: DataTypes.TEXT,
-            allowNull: true,
-        }, 
+            allowNull: true
+        },
     },
     {
         tableName: 'users',
